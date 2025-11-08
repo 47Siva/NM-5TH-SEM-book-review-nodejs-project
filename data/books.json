@@ -1,0 +1,5 @@
+{
+  "1": { "isbn": "111", "title": "Node.js Guide", "author": "John", "review": "Good Book" },
+  "2": { "isbn": "222", "title": "Express Basics", "author": "David", "review": "Excellent" },
+  "3": { "isbn": "333", "title": "Async Mastery", "author": "John", "review": "Useful" }
+}

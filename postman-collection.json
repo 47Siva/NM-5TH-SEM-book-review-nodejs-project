@@ -1,0 +1,171 @@
+{
+  "info": {
+    "name": "Book Review API",
+    "description": "Collection for testing all tasks",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Task 1 - Get All Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "Task 2 - Get Book by ISBN",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/books/isbn/111",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["books", "isbn", "111"]
+        }
+      }
+    },
+    {
+      "name": "Task 3 - Get Books by Author",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/books/author/John",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["books", "author", "John"]
+        }
+      }
+    },
+    {
+      "name": "Task 4 - Get Books by Title",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/books/title/Node",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["books", "title", "Node"]
+        }
+      }
+    },
+    {
+      "name": "Task 5 - Get Book Review",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/books/review/111",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["books", "review", "111"]
+        }
+      }
+    },
+    {
+      "name": "Task 6 - Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/users/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["users", "register"]
+        }
+      }
+    },
+    {
+      "name": "Task 7 - Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/users/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["users", "login"]
+        }
+      }
+    },
+    {
+      "name": "Task 8 - Add/Modify Review",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_TOKEN_HERE"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"review\": \"This is an amazing book! Highly recommended.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/books/review/111",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["books", "review", "111"]
+        }
+      }
+    },
+    {
+      "name": "Task 9 - Delete Review",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_TOKEN_HERE"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/books/review/111",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["books", "review", "111"]
+        }
+      }
+    }
+  ]
+}
