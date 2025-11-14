@@ -109,3 +109,105 @@ This will execute all four tasks:
 7. `7-login.png` - Task 7
 8. `8-reviewadded.png` - Task 8
 9. `9-deletereview.png` - Task 9
+
+
+
+
+🧭 Aim
+
+To build a secure user authentication system using Node.js, Express, MongoDB, bcrypt for password hashing, and JWT for token-based authentication.
+
+
+---
+
+⚙️ Algorithm (Short Version)
+
+1. Start the Express server and connect to MongoDB.
+
+
+2. Define user schema with username, email, and password.
+
+
+3. Hash password using bcrypt before saving.
+
+
+4. Create Register API to save new users.
+
+
+5. Create Login API to verify user and generate JWT tokens.
+
+
+6. Store and validate refresh tokens for renewing access.
+
+
+7. Use JWT middleware to protect routes.
+
+
+8. Implement Profile and Logout APIs.
+
+
+9. Return JSON responses.
+
+
+10. Stop the server.
+
+
+
+
+---
+
+💻 Program (Short Version)
+
+// User Model
+const userSchema = new mongoose.Schema({
+  username: String, email: String, password: String
+});
+
+userSchema.pre('save', async function () {
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+// Register
+async function register(req, res) {
+  const user = new User(req.body);
+  await user.save();
+  res.json({ msg: "User registered successfully" });
+}
+
+// Login
+async function login(req, res) {
+  const user = await User.findOne({ email: req.body.email });
+  const accessToken = generateAccessToken(user);
+  const refreshToken = crypto.randomBytes(64).toString("hex");
+  res.json({ msg: "Login successful", accessToken, refreshToken });
+}
+
+// Auth Middleware
+function auth(req, res, next) {
+  jwt.verify(req.headers.token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ error: "Invalid token" });
+    req.user = user;
+    next();
+  });
+}
+
+
+---
+
+🧾 Output
+
+Registration: “User registered successfully”
+
+Login: Returns accessToken + refreshToken
+
+Profile: Displays user details (password hidden)
+
+Logout: “Logout successful”
+
+
+
+---
+
+📊 Result
+
+Secure user registration, login, JWT authentication, and session handling were successfully implemented using Node.js, Express, MongoDB, bcrypt, and JWT.
